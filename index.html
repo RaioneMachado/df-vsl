@@ -123,15 +123,264 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <script src="https://cdn.agenciainsula.com.br/assets/jsplugins/swiper-bundle.min.js"></script>
     </head>
 <body>
+<style>
+/* Estilos para o Header de Login */
+#login-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 45px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.02);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.aluno-btn {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.aluno-btn:hover {
+    background-color: #e9ecef;
+    color: #333;
+    border-color: #dee2e6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.assinatura-btn {
+    background: linear-gradient(135deg, #8a2be2, #9b30ff);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: none;
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.assinatura-btn:hover {
+    background: linear-gradient(135deg, #7b1fa2, #8a2be2);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(138, 43, 226, 0.4);
+}
+
+/* Menu Hamburguer para Mobile */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 15px;
+        position: relative;
+    }
+    
+    .header-right {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 10px 10px;
+        z-index: 1000;
+    }
+    
+    .header-right.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .aluno-btn, .assinatura-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .aluno-btn:hover, .assinatura-btn:hover {
+        transform: none;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .header-logo {
+        height: 38px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0 10px;
+    }
+    
+    .header-logo {
+        height: 35px;
+        max-width: 180px;
+    }
+    
+    .header-right {
+        padding: 15px;
+    }
+    
+    .aluno-btn, .assinatura-btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const headerRight = document.querySelector('.header-right');
+    
+    hamburgerMenu.addEventListener('click', function() {
+        this.classList.toggle('active');
+        headerRight.classList.toggle('active');
+        
+        // Fechar menu ao clicar fora
+        if (headerRight.classList.contains('active')) {
+            document.addEventListener('click', closeMenuOnClickOutside);
+        } else {
+            document.removeEventListener('click', closeMenuOnClickOutside);
+        }
+    });
+    
+    function closeMenuOnClickOutside(event) {
+        if (!headerRight.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+            hamburgerMenu.classList.remove('active');
+            headerRight.classList.remove('active');
+            document.removeEventListener('click', closeMenuOnClickOutside);
+        }
+    }
+});
+</script>
+
 <script>var PAGE_VERSION = "UNIQUE"; </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXXG3Z7"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
- 
+
+    <!-- Header de Login -->
+    <header id="login-header">
+        <div class="header-container">
+            <div class="header-left">
+                <img src="[COLOQUE_SUA_URL_DA_LOGO_AQUI]" 
+                     alt="Logo Curso Desondulação" class="header-logo" 
+                     loading="lazy" fetchpriority="auto" decoding="auto"/>
+            </div>
+            <div class="header-right">
+                <a href="https://app.hub.la/signin" target="_blank" class="aluno-btn">Já sou aluno</a>
+                <a href="#" class="assinatura-btn">Assinar DF</a>
+            </div>
+            <button class="hamburger-menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
      
-<div id="i6bj"><section id="ig8hl"><section id="iu8wh" class="section-control"><div id="if4i2"><img id="i9jy3" src="https://cdn.agenciainsula.com.br/reservatoriodedopamina.com.br/alunos200mil.png.webp" loading="lazy" alt="Mais de 200 mil pessoas" width="330" height="54" fetchpriority="auto" decoding="async"/><h2 id="ir0ea" class="elementor-heading-title elementor-size-default">Conhecimento prático e técnico especializado</h2><p></p><p id="ius5s-2"><span id="i0as3">Assista ao vídeo e veja como você pode dominar a técnica de desondulação para cabelos masculinos e transformar seu serviço de barbearia!</span></p><div id="ir5twu"></div><div id="i5oguj"><iframe frameborder="0" id="panda-15eaccec-107a-4c6a-ab41-b9b807f9e7ab" title="Vídeo" src="https://player-vz-68652e46-6b9.tv.pandavideo.com.br/embed/?v=15eaccec-107a-4c6a-ab41-b9b807f9e7ab" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen="true" width="720" height="360" fetchpriority="high" loading="eager">
-                </iframe></div><a href="pvt@utm_source=search.html#planos" target="_self" id="querofazerparte1" title="Quero aprender desondulação" class="btn">Quero aprender desondulação</a><p id="ius5s-2-2"><span id="idvpf"> Aulas ao vivo semanais com especialistas em desondulação</span></p></div></section></section><section id="fluency"><section id="ibdn9l" class="section-control"><div id="iuve7c"><img alt="Logo Curso Desondulação" id="igeujg" src="https://cdn.agenciainsula.com.br/reservatoriodedopamina.com.br/frame-127.webp" loading="lazy" fetchpriority="auto" decoding="auto" width="374" height="57"/><h2 id="il8xi-3" class="elementor-heading-title elementor-size-default">Sua técnica molda seus resultados.<br/>A desondulação masculina é a especialização que faltava.</h2><section id="ibbffr"><section id="iu20ki" class="section-control"><div id="iwea4v"><p id="iw6rci">Assim como transformar cabelos exige técnica específica, a desondulação para homens é uma habilidade que abre novos caminhos profissionais. </p><p id="iw6rci-2">Por isso, criamos este curso completo em uma <span id="ig06ib">oferta promocional especial</span> para barbeiros que desejam se destacar no mercado. <span id="ikq2iv">Aproveite essa oportunidade clicando no link abaixo.</span></p></div><div id="idixnp"><img alt="Imagem" id="ibyh2e" src="https://cdn.agenciainsula.com.br/reservatoriodedopamina.com.br/group-980.webp" loading="lazy" fetchpriority="auto" decoding="auto"/></div></section></section><a href="pvt@utm_source=search.html" target="_blank" id="ikp3pa" class="btn"><span id="ifn5x3" class="titulo-btn">Quero conhecer o curso completo</span> </a><div id="i290fh"><h2 id="il8xi" class="elementor-heading-title elementor-size-default">Fique ligado as viradas dos lotes promocionais para profissionais:</h2><div id="irg39t"><div id="ib4t4j" class="capsula"><div id="ipo15h"><p id="ifkd7v"><span id="i04gt8">Lote 1 -</span> 25/08 a 27/08</p></div></div><div id="ib4t4j-3" class="capsula"><div id="ipo15h-3"><p id="ifkd7v-3"><span id="id2bxk">Lote 2 -</span> 28/08 a 31/08</p></div></div><div id="ib4t4j-2" class="capsula"><div id="ipo15h-2"><p id="ifkd7v-2"><span id="ijrb5p">Lote 3 -</span> 01/09 a 05/09</p></div></div></div><div id="izjmj8"><p id="insriz">Restam</p><div id="countdown-wrapper-2" data-custom-trait="countdown" data-date="05/09/2025" data-time="00:00" class="countdown-wrapper"><div id="countdown-item-01" class="countdown-item"><span id="countdown-digits-01" class="countdown-digits countdown-days">0</span><span id="countdown-label-01" class="countdown-label">Dias</span></div></div><script>
+<div id="i6bj"><section id="ig8hl"><section id="iu8wh" class="section-control"><div id="if4i2"><h2 id="ir0ea" class="elementor-heading-title elementor-size-default">Conhecimento prático e técnico especializado</h2><p></p><p id="ius5s-2"><span id="i0as3">Assista ao vídeo e veja como você pode dominar a técnica de desondulação para cabelos masculinos e transformar seu serviço de barbearia!</span></p><div id="ir5twu"></div><div id="i5oguj"><iframe frameborder="0" id="panda-15eaccec-107a-4c6a-ab41-b9b807f9e7ab" title="Vídeo" src="https://player-vz-68652e46-6b9.tv.pandavideo.com.br/embed/?v=15eaccec-107a-4c6a-ab41-b9b807f9e7ab" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen="true" width="720" height="360" fetchpriority="high" loading="eager">
+                </iframe></div><a href="pvt@utm_source=search.html#planos" target="_self" id="querofazerparte1" title="Quero aprender desondulação" class="btn">Quero aprender desondulação</a><p id="ius5s-2-2"><span id="idvpf"> Aulas ao vivo semanais com especialistas em desondulação</span></p></div></section></section><section id="fluency"><section id="ibdn9l" class="section-control"><div id="iuve7c"><h2 id="il8xi-3" class="elementor-heading-title elementor-size-default">Sua técnica molda seus resultados.<br/>A desondulação masculina é a especialização que faltava.</h2><section id="ibbffr"><section id="iu20ki" class="section-control"><div id="iwea4v"><p id="iw6rci">Assim como transformar cabelos exige técnica específica, a desondulação para homens é uma habilidade que abre novos caminhos profissionais. </p><p id="iw6rci-2">Por isso, criamos este curso completo em uma <span id="ig06ib">oferta promocional especial</span> para barbeiros que desejam se destacar no mercado. <span id="ikq2iv">Aproveite essa oportunidade clicando no link abaixo.</span></p></div><div id="idixnp"><img alt="Imagem" id="ibyh2e" src="https://cdn.agenciainsula.com.br/reservatoriodedopamina.com.br/group-980.webp" loading="lazy" fetchpriority="auto" decoding="auto"/></div></section></section><a href="pvt@utm_source=search.html" target="_blank" id="ikp3pa" class="btn"><span id="ifn5x3" class="titulo-btn">Quero conhecer o curso completo</span> </a><div id="i290fh"><h2 id="il8xi" class="elementor-heading-title elementor-size-default">Fique ligado as viradas dos lotes promocionais para profissionais:</h2><div id="irg39t"><div id="ib4t4j" class="capsula"><div id="ipo15h"><p id="ifkd7v"><span id="i04gt8">Lote 1 -</span> 25/08 a 27/08</p></div></div><div id="ib4t4j-3" class="capsula"><div id="ipo15h-3"><p id="ifkd7v-3"><span id="id2bxk">Lote 2 -</span> 28/08 a 31/08</p></div></div><div id="ib4t4j-2" class="capsula"><div id="ipo15h-2"><p id="ifkd7v-2"><span id="ijrb5p">Lote 3 -</span> 01/09 a 05/09</p></div></div></div><div id="izjmj8"><p id="insriz">Restam</p><div id="countdown-wrapper-2" data-custom-trait="countdown" data-date="05/09/2025" data-time="00:00" class="countdown-wrapper"><div id="countdown-item-01" class="countdown-item"><span id="countdown-digits-01" class="countdown-digits countdown-days">0</span><span id="countdown-label-01" class="countdown-label">Dias</span></div></div><script>
                     function updateCountdown() {
                         const countdownWrapper = document.querySelector('.countdown-wrapper');
                         const dateStr = countdownWrapper.dataset.date; // e.g., "27/09/2025"
