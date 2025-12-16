@@ -126,8 +126,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 /* Estilos para o Header de Login */
 #login-header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #801580 0%, #000000 100%);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     padding: 12px 0;
     position: sticky;
     top: 0;
@@ -156,6 +156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     max-width: 220px;
     object-fit: contain;
     transition: transform 0.3s ease;
+    filter: brightness(1.1); /* Melhora a visibilidade da logo no fundo escuro */
 }
 
 .header-logo:hover {
@@ -169,8 +170,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .aluno-btn {
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: #f5f5f5; /* CINZA CLARO */
+    color: #333; /* Texto escuro para contraste */
     padding: 12px 28px;
     border-radius: 8px;
     text-decoration: none;
@@ -178,20 +179,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 16px;
     transition: all 0.3s ease;
     white-space: nowrap;
-    border: 2px solid #e9ecef;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .aluno-btn:hover {
-    background-color: #e9ecef;
+    background-color: #e8e8e8; /* Cinza um pouco mais escuro no hover */
     color: #333;
-    border-color: #dee2e6;
+    border-color: #d0d0d0;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .assinatura-btn {
-    background: linear-gradient(135deg, #8a2be2, #9b30ff);
+    background: linear-gradient(135deg, #ff6b00, #ff8c00); /* LARANJADO */
     color: white;
     padding: 12px 28px;
     border-radius: 8px;
@@ -201,15 +202,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transition: all 0.3s ease;
     white-space: nowrap;
     border: none;
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
     letter-spacing: 0.5px;
 }
 
 .assinatura-btn:hover {
-    background: linear-gradient(135deg, #7b1fa2, #8a2be2);
+    background: linear-gradient(135deg, #e55a00, #ff7b00); /* Laranjado mais escuro no hover */
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(138, 43, 226, 0.4);
+    box-shadow: 0 6px 16px rgba(255, 107, 0, 0.5);
 }
 
 /* Menu Hamburguer para Mobile */
@@ -230,13 +231,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: block;
     height: 3px;
     width: 100%;
-    background-color: #333;
+    background-color: white;
     border-radius: 3px;
     transition: all 0.3s ease;
 }
 
 .hamburger-menu.active span:nth-child(1) {
     transform: rotate(45deg) translate(8px, 8px);
+    background-color: white;
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -245,6 +247,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 .hamburger-menu.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
+    background-color: white;
 }
 
 /* Responsividade */
@@ -260,13 +263,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         top: 100%;
         left: 0;
         right: 0;
-        background-color: white;
+        background: linear-gradient(135deg, #801580 0%, #000000 100%);
         flex-direction: column;
         gap: 15px;
         padding: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         border-radius: 0 0 10px 10px;
         z-index: 1000;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .header-right.active {
@@ -353,31 +357,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<script>var PAGE_VERSION = "UNIQUE"; </script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXXG3Z7"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXXG3Z7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-    <!-- Header de Login -->
-    <header id="login-header">
-        <div class="header-container">
-            <div class="header-left">
-                <img src="[COLOQUE_SUA_URL_DA_LOGO_AQUI]" 
-                     alt="Logo Curso Desondulação" class="header-logo" 
-                     loading="lazy" fetchpriority="auto" decoding="auto"/>
-            </div>
-            <div class="header-right">
-                <a href="https://app.hub.la/signin" target="_blank" class="aluno-btn">Já sou aluno</a>
-                <a href="#" class="assinatura-btn">Assinar DF</a>
-            </div>
-            <button class="hamburger-menu" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+<!-- Header de Login -->
+<header id="login-header">
+    <div class="header-container">
+        <div class="header-left">
+            <img src="[COLOQUE_SUA_URL_DA_LOGO_AQUI]" 
+                 alt="Logo Curso Desondulação" class="header-logo" 
+                 loading="lazy" fetchpriority="auto" decoding="auto"/>
         </div>
-    </header>
+        <div class="header-right">
+            <a href="https://app.hub.la/signin" target="_blank" class="aluno-btn">Já sou aluno</a>
+            <a href="#" class="assinatura-btn">Comprar Agora</a>
+        </div>
+        <button class="hamburger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
      
 <div id="i6bj"><section id="ig8hl"><section id="iu8wh" class="section-control"><div id="if4i2"><h2 id="ir0ea" class="elementor-heading-title elementor-size-default">Conhecimento prático e técnico especializado</h2><p></p><p id="ius5s-2"><span id="i0as3">Assista ao vídeo e veja como você pode dominar a técnica de desondulação para cabelos masculinos e transformar seu serviço de barbearia!</span></p><div id="ir5twu"></div><div id="i5oguj"><iframe frameborder="0" id="panda-15eaccec-107a-4c6a-ab41-b9b807f9e7ab" title="Vídeo" src="https://player-vz-68652e46-6b9.tv.pandavideo.com.br/embed/?v=15eaccec-107a-4c6a-ab41-b9b807f9e7ab" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen="true" width="720" height="360" fetchpriority="high" loading="eager">
                 </iframe></div><a href="pvt@utm_source=search.html#planos" target="_self" id="querofazerparte1" title="Quero aprender desondulação" class="btn">Quero aprender desondulação</a><p id="ius5s-2-2"><span id="idvpf"> Aulas ao vivo semanais com especialistas em desondulação</span></p></div></section></section><section id="fluency"><section id="ibdn9l" class="section-control"><div id="iuve7c"><h2 id="il8xi-3" class="elementor-heading-title elementor-size-default">Sua técnica molda seus resultados.<br/>A desondulação masculina é a especialização que faltava.</h2><section id="ibbffr"><section id="iu20ki" class="section-control"><div id="iwea4v"><p id="iw6rci">Assim como transformar cabelos exige técnica específica, a desondulação para homens é uma habilidade que abre novos caminhos profissionais. </p><p id="iw6rci-2">Por isso, criamos este curso completo em uma <span id="ig06ib">oferta promocional especial</span> para barbeiros que desejam se destacar no mercado. <span id="ikq2iv">Aproveite essa oportunidade clicando no link abaixo.</span></p></div><div id="idixnp"><img alt="Imagem" id="ibyh2e" src="https://cdn.agenciainsula.com.br/reservatoriodedopamina.com.br/group-980.webp" loading="lazy" fetchpriority="auto" decoding="auto"/></div></section></section><a href="pvt@utm_source=search.html" target="_blank" id="ikp3pa" class="btn"><span id="ifn5x3" class="titulo-btn">Quero conhecer o curso completo</span> </a><div id="i290fh"><h2 id="il8xi" class="elementor-heading-title elementor-size-default">Fique ligado as viradas dos lotes promocionais para profissionais:</h2><div id="irg39t"><div id="ib4t4j" class="capsula"><div id="ipo15h"><p id="ifkd7v"><span id="i04gt8">Lote 1 -</span> 25/08 a 27/08</p></div></div><div id="ib4t4j-3" class="capsula"><div id="ipo15h-3"><p id="ifkd7v-3"><span id="id2bxk">Lote 2 -</span> 28/08 a 31/08</p></div></div><div id="ib4t4j-2" class="capsula"><div id="ipo15h-2"><p id="ifkd7v-2"><span id="ijrb5p">Lote 3 -</span> 01/09 a 05/09</p></div></div></div><div id="izjmj8"><p id="insriz">Restam</p><div id="countdown-wrapper-2" data-custom-trait="countdown" data-date="05/09/2025" data-time="00:00" class="countdown-wrapper"><div id="countdown-item-01" class="countdown-item"><span id="countdown-digits-01" class="countdown-digits countdown-days">0</span><span id="countdown-label-01" class="countdown-label">Dias</span></div></div><script>
