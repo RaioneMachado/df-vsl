@@ -192,7 +192,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 
 .assinatura-btn {
-    background: linear-gradient(135deg, #ff6b00, #ff8c00); /* LARANJADO */
+    background: linear-gradient(to right, #000000, #7B147B); /* Degradê preto (esquerda) para roxo (direita) */
     color: white;
     padding: 12px 28px;
     border-radius: 8px;
@@ -201,16 +201,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 16px;
     transition: all 0.3s ease;
     white-space: nowrap;
-    border: none;
-    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+    border: 1px solid #ffffff; /* Contorno branco fininho */
+    box-shadow: 0 4px 12px rgba(123, 20, 123, 0.4);
     letter-spacing: 0.5px;
 }
 
 .assinatura-btn:hover {
-    background: linear-gradient(135deg, #e55a00, #ff7b00); /* Laranjado mais escuro no hover */
+    background: linear-gradient(to right, #000000, #6a116a); /* Degradê mais escuro no hover */
     color: white;
+    border-color: #ffffff; /* Mantém o contorno branco no hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 107, 0, 0.5);
+    box-shadow: 0 6px 16px rgba(123, 20, 123, 0.5);
 }
 
 /* Menu Hamburguer para Mobile */
